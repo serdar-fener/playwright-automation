@@ -15,7 +15,7 @@ export class BaseEndpoint {
 
     protected async get(path: string, config: AxiosRequestConfig = {}) {
         return axios
-            .get(`${this.baseUrl}${path}`, config)
+            .get(`${this.baseUrl}${path}&key=${this.trelloAPIKey}&token=${this.trelloToken}`, config)
             .then((response) => {
                 return response;
             })
@@ -37,7 +37,7 @@ export class BaseEndpoint {
 
     protected async put(path: string, body: any, config: AxiosRequestConfig = {}) {
         return axios
-            .put(`${this.baseUrl}${path}`, body, config)
+            .put(`${this.baseUrl}${path}&key=${this.trelloAPIKey}&token=${this.trelloToken}`, body, config)
             .then((response) => {
                 return response;
             })
@@ -48,7 +48,7 @@ export class BaseEndpoint {
 
     protected async patch(path: string, body: any, config: AxiosRequestConfig = {}) {
         return axios
-            .patch(`${this.baseUrl}${path}`, body, config)
+            .patch(`${this.baseUrl}${path}&key=${this.trelloAPIKey}&token=${this.trelloToken}`, body, config)
             .then((response) => {
                 return response;
             })
@@ -59,7 +59,7 @@ export class BaseEndpoint {
 
     protected async delete(path: string, config: AxiosRequestConfig = {}) {
         return axios
-            .delete(`${this.baseUrl}${path}`, config)
+            .delete(`${this.baseUrl}${path}&key=${this.trelloAPIKey}&token=${this.trelloToken}`, config)
             .then((response) => {
                 return response;
             })
