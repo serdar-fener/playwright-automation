@@ -1,4 +1,4 @@
-name: FrontEnd Tests
+name: Backend Tests
 on:
   workflow_dispatch:
 jobs:
