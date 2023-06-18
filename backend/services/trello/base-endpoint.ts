@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { getAppConfig } from '../../config';
+
+import { getAppConfig } from '../../../data/config';
 
 export class BaseEndpoint {
     protected baseUrl: string;
