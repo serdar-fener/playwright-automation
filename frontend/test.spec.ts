@@ -11,6 +11,7 @@ let loginPage: LoginPage;
 let boardPage: BoardPage;
 let cardPage: CardPage;
 let boardURL: string;
+let boardID: string;
 
 // prepare test data via api..
 test.beforeAll(async () => {
@@ -21,6 +22,7 @@ test.beforeAll(async () => {
   const boardRes = await boardEndpoint.createBoard({ name: 'playwrightTestBoard' });
   expect(boardRes.status).toBe(200);
   boardURL = boardRes.data.url;
+  boardID = boardRes.data.id;
 
   // create a new list..
   const listRes = await boardEndpoint.createList(boardRes.data.id, { name: 'testList' });
@@ -34,6 +36,12 @@ test.beforeAll(async () => {
 
   // add comment to one of the cards..
   await cardEndpoint.addComment(cardRes.data.id, 'test automation comment');
+});
+
+// delete board after test finish. Trello allows max number of boards at a time..
+test.afterAll(async() => {
+  const boardEndpoint = new BoardEndpoint();
+  await boardEndpoint.deleteBoard(boardID);
 });
 
 // navigate to trello.
